@@ -1,3 +1,25 @@
 @import "tailwindcss";
 
 @plugin "daisyui";
+
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #ff7eb3, #ff758c, #8685ef, #6a11cb);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+}
+
+
+
