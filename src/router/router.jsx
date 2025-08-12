@@ -5,6 +5,7 @@ import RootLayout from "../layouts/AuthLayouts/RootLayout";
 import Home from "../pages/home/Home";
 import About from "../pages/about/About";
 import Skills from "../pages/skills/Skills";
+import Education from "../pages/home/education/Education";
 
 
 
@@ -28,7 +29,11 @@ import Skills from "../pages/skills/Skills";
         path: 'skills',
         element: <Skills/>,
         HydrateFallback: <span className="loading loading-bars loading-xl"></span>
-      }
+      },
+    {
+      path: 'education',
+      element: <Education/>
+    }
     ]
   },
 ]);
