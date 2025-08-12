@@ -4,6 +4,7 @@ import ToolsSection from './tools/ToolsSection';
 import ToolsSliderSection from './tools/ToolsSliderSection';
 import About from '../about/About';
 import Education from './education/Education';
+import ContactInfo from '../contact/ContactInfo';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
            <ToolsSection/>
            <ToolsSliderSection/>
            <Education/>
+           <ContactInfo/>
         </div>
     );
 };

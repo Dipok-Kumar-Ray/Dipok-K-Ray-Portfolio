@@ -6,6 +6,7 @@ import Home from "../pages/home/Home";
 import About from "../pages/about/About";
 import Skills from "../pages/skills/Skills";
 import Education from "../pages/home/education/Education";
+import ContactInfo from "../pages/contact/ContactInfo";
 
 
 
@@ -33,6 +34,10 @@ import Education from "../pages/home/education/Education";
     {
       path: 'education',
       element: <Education/>
+    },
+    {
+      path: 'contact-info',
+      element: <ContactInfo/>
     }
     ]
   },
