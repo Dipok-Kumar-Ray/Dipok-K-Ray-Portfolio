@@ -4,6 +4,7 @@ import {
 import RootLayout from "../layouts/AuthLayouts/RootLayout";
 import Home from "../pages/home/Home";
 import About from "../pages/about/About";
+import Skills from "../pages/skills/Skills";
 
 
 
@@ -22,6 +23,11 @@ import About from "../pages/about/About";
         element: <About/>,
         hydrateFallbackElement: <span className="loading loading-bars loading-xl"></span>
 
+      },
+      {
+        path: 'skills',
+        element: <Skills/>,
+        HydrateFallback: <span className="loading loading-bars loading-xl"></span>
       }
     ]
   },
