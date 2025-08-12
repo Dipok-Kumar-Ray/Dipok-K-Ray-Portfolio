@@ -1,0 +1,76 @@
+[
+  {
+    "id": "product-recommendation-system",
+    "name": "Recipe Food Book",
+    "type": " MERN Stack App",
+    "image": "https://i.ibb.co.com/RTPSzfvw/image.png",
+    "details": {
+      "techStack": [
+        "React", "Tailwind CSS", "Node.js", "Express",
+        "MongoDB", "JWT (httpOnly)", "Firebase (Auth)"
+      ],
+      "description": "A full-stack product recommendation platform where users can submit product-related queries and receive suggestions from others. The app supports secure authentication, personalized dashboards, and a dynamic feed of recommendations.",
+      "liveLink": "https://enchanting-cannoli-23361b.netlify.app/",
+      "githubLink": "https://github.com/Ratul8863/Product-Recommendations-client.",
+      "challenges": [
+        "Integrating JWT with Firebase for secure and persistent authentication.",
+        "Managing complex user interaction flows across recommendation submissions, likes, and feedback.",
+        "Protecting routes and user data access using server-side verification."
+      ],
+      "improvements": [
+        "Add machine learning model for personalized recommendation logic.",
+        "Include search & filter options for enhanced user experience.",
+        "Enable user messaging and notification system."
+      ]
+    }
+  },
+  {
+    "id": "hobby-hub",
+    "name": "HobbyHub - Local Group Organizer",
+    "type": "Full Stack Web App",
+    "image": "https://i.ibb.co/Z1XkBP95/shotsnapp-1751226585-115.png",
+    "details": {
+      "techStack": [
+        "React", "Tailwind CSS", "Firebase Auth", "Node.js", "Express",
+        "MongoDB", "JWT", "Recharts"
+      ],
+      "description": "HobbyHub allows users to discover, join, and manage local hobby groups like book clubs, hiking teams, or creative circles. Includes admin dashboards, charts, and public group browsing.",
+      "liveLink": "https://hobyhub-by-ratul.web.app/",
+      "githubLink": "https://github.com/Ratul8863/Hoby-hub-client",
+      "challenges": [
+        "Designing a clean, responsive dashboard UI with real-time analytics (Recharts).",
+        "Implementing role-based access for group admins and general users.",
+        "Handling dynamic filtering, sorting, and search logic."
+      ],
+      "improvements": [
+        "Add in-app messaging between group members.",
+        "Enable event creation with calendar reminders and RSVP.",
+        "Improve mobile experience with bottom navigation."
+      ]
+    }
+  },
+  {
+    "id": "app-store",
+    "name": "AppStore - App Explorer",
+    "type": "Frontend Application",
+    "image": "https://i.ibb.co/WN8djb1j/Screenshot-2025-06-25-145241.png",
+    "details": {
+      "techStack": [
+        "React", "Tailwind CSS", "React Router", "Firebase Auth"
+      ],
+      "description": "A modern frontend web application that simulates an App Store experience. Users can browse categorized apps, see trending items, and access app details through a stylish and responsive UI.",
+      "liveLink": "https://appstore-by-ratul.web.app/",
+      "githubLink": "https://github.com/Ratul8863/App-Store-a9",
+      "challenges": [
+        "Maintaining a fully responsive and visually consistent layout across devices.",
+        "Implementing dynamic routing and persistent authentication flow.",
+        "Building a reusable and animated category-based filtering system."
+      ],
+      "improvements": [
+        "Enable rating and review system for each app.",
+        "Add backend database to support real-time app submissions and updates.",
+        "Integrate download tracking analytics."
+      ]
+    }
+  }
+]

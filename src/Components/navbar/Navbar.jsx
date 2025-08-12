@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router"; 
+fimport { Link, NavLink } from "react-router"; 
 import { useState } from "react";
 
 const Navbar = () => {

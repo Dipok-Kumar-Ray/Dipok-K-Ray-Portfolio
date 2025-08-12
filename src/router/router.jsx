@@ -7,6 +7,8 @@ import About from "../pages/about/About";
 import Skills from "../pages/skills/Skills";
 import Education from "../pages/home/education/Education";
 import ContactInfo from "../pages/contact/ContactInfo";
+import ProjectsSection from "../pages/projects/ProjectsSection";
+import ProjectDetails from "../pages/projects/ProjectDetails";
 
 
 
@@ -38,6 +40,14 @@ import ContactInfo from "../pages/contact/ContactInfo";
     {
       path: 'contact-info',
       element: <ContactInfo/>
+    },
+    {
+      path: 'projects',
+      element: <ProjectsSection/>
+    }, 
+    {
+      path: 'projects/:id',
+      element: <ProjectDetails/>
     }
     ]
   },
