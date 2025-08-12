@@ -26,7 +26,7 @@ const tools = [
 
 const ToolsSliderSection = () => {
   return (
-    <section className="pt-16  overflow-hidden">
+    <section className="bg-[#0F172A] pt-16  overflow-hidden mb-5">
       
 
       <Marquee speed={50} gradient={false} pauseOnHover={true}>
@@ -36,7 +36,7 @@ const ToolsSliderSection = () => {
             className="flex flex-col items-center justify-center mx-10 text-center group transition-transform duration-300 hover:scale-105"
           >
             <div className="text-6xl mb-2">{tool.icon}</div>
-            <p className="text-sm text-gray-300 group-hover:text-lime-400 transition-all duration-300">
+            <p className="py-3 text-sm text-gray-300 group-hover:text-lime-400 transition-all duration-300">
               {tool.name}
             </p>
           </div>

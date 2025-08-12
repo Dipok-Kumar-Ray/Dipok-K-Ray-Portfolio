@@ -16,16 +16,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/about"
-          className={({ isActive }) =>
-            isActive ? "text-primary font-semibold" : "hover:text-primary"
-          }
-        >
-          About
-        </NavLink>
-      </li>
+      
       <li>
         <NavLink
           to="/skills"
@@ -64,6 +55,17 @@ const Navbar = () => {
           }
         >
           Contact
+        </NavLink>
+      </li>
+
+      <li>
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive ? "text-primary font-semibold" : "hover:text-primary"
+          }
+        >
+          About
         </NavLink>
       </li>
     </>
