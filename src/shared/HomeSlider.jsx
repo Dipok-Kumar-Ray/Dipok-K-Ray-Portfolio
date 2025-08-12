@@ -1,101 +1,88 @@
-// HeroSlider.jsx
-import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin, FaTwitter, FaFacebook } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
-import { Link } from "react-router-dom";
-import Profile from "../assets/profile.png";
-import { FaChevronDown } from "react-icons/fa";
+import ProfilePhoto from "../assets/profile.png"
 
-const HeroSlider = () => {
-  // Smooth scroll handler for "About" section
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById("about");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
+ const HomeSlider = () => {
   return (
-    <div className="relative min-h-screen bg-base-100 dark:bg-gray-900">
-      {/* Animated Gradient Background */}
-      <div className="absolute inset-0 animated-gradient opacity-30 dark:opacity-20"></div>
+    <section className="bg-[#0F172A] text-white min-h-screen flex items-center px-6">
+      <div className="max-w-6xl w-full flex flex-col md:flex-row items-center gap-12 mx-auto">
 
-      {/* Content Wrapper */}
-      <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-10 h-screen px-6 py-10 md:py-0">
-        {/* Text Section */}
-        <motion.div
-          className="flex-1 text-center md:text-left"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-transparent bg-clip-text">
-            <Typewriter
-              words={["Hi,", "I'm Dipok Kumar Ray"]}
-              loop={true}
-              cursor
-              cursorStyle="_"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1500}
-            />
+        {/* Left Content */}
+        <div className="flex-1">
+          {/* <p className="text-green-400 text-lg mb-2">
+            • Code meets creativity — by Dipok Kumar Ray
+          </p> */}
+
+          {/* Name + Typewriter */}
+          <h1 className="text-5xl font-bold leading-tight">
+            I'm <span className="text-green-400">Dipok</span>,<br />
+            <span className="text-green-400">
+              <Typewriter
+                words={['JavaScript Developer', 'MERN Stack Developer', 'Competitive Programmer']}
+                loop={0}
+                cursor
+                cursorStyle="|"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1500}
+              />
+            </span>
           </h1>
 
-          <p className="text-md sm:text-lg md:text-2xl mb-6 text-gray-700 dark:text-gray-300">
-            <Typewriter
-              words={[
-                "MERN Stack Developer",
-                "Frontend Enthusiast",
-                "JavaScript Lover",
-              ]}
-              loop={true}
-              cursor
-              cursorStyle="_"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1500}
-            />
+          {/* Description */}
+          <p className="mt-4 text-gray-300 max-w-lg">
+            I'm Dipok Kumar Ray, a mern stack developer from Bangladesh. 
+            I build modern, user-focused web applications using JavaScript and the MERN stack. 
+            
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+          {/* Buttons */}
+          <div className="flex gap-4 mt-6">
+            <a
+              href="#projects"
+              className="bg-green-400 text-black px-6 py-3 rounded-full font-medium hover:bg-green-500 transition"
+            >
+              View My Work
+            </a>
             <a
               href="/resume.pdf"
-              className="btn btn-primary"
-              target="_blank"
-              rel="noopener noreferrer"
+              className="border border-gray-500 px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition"
             >
               Download Resume
             </a>
-            <Link to="/contact" className="btn btn-outline btn-primary">
-              Contact Me
-            </Link>
           </div>
-        </motion.div>
 
-        {/* Profile Image */}
-        <motion.div
-          className="flex-1 flex justify-center"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <img
-            className="w-40 sm:w-52 md:w-72 lg:w-80 rounded-full shadow-lg border-4 border-primary"
-            src={Profile}
-            alt="Profile"
-          />
-        </motion.div>
-      </div>
+          {/* Social Icons */}
+          <div className="flex gap-5 mt-6 text-2xl">
+            <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-green-400"><FaGithub /></a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-green-400"><FaLinkedin /></a>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-green-400"><FaTwitter /></a>
+            <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-green-400"><FaFacebook /></a>
+          </div>
+        </div>
 
-      {/* Scroll Down Indicator */}
-      <button
-        onClick={scrollToAbout}
-        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce text-primary text-3xl z-20"
-        aria-label="Scroll down to About section"
-      >
-        <FaChevronDown />
-      </button>
+        {/* Right Image */}
+ {/* Right Image */}
+<div className="flex-1 flex justify-center relative">
+  <div className="relative">
+    {/* Gradient Border */}
+    <div className="rounded-xl p-1 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600">
+      <img
+        src={ProfilePhoto}
+        alt="Dipok"
+        className="block rounded-xl w-64 h-64 object-cover border-0 shadow-lg"
+      />
     </div>
-  );
-};
+    {/* Tag */}
+    <div className="absolute bottom-4 right-0 bg-green-500 text-black px-4 py-1 rounded-lg text-sm font-bold shadow-md">
+      MERN Stack Developer
+    </div>
+  </div>
+</div>
 
-export default HeroSlider;
+
+      </div>
+    </section>
+  );
+}
+export default HomeSlider;
