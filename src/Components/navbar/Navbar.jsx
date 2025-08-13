@@ -1,4 +1,4 @@
-fimport { Link, NavLink } from "react-router"; 
+import { Link, NavLink } from "react-router"; 
 import { useState } from "react";
 
 const Navbar = () => {
@@ -72,7 +72,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="navbar bg-base-100 shadow-md fixed top-0 left-0 w-full z-50 px-4 md:px-12">
+    <nav className="navbar bg-base-100 shadow-md fixed top-0 mb-20 left-0 w-full z-50 px-4 md:px-12">
 <div className="flex-1">
   <Link
     to="/"

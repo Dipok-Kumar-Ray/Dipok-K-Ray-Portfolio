@@ -7,7 +7,7 @@ const RootLayout = () => {
     return (
         <div>
             <Navbar/>
-            <main style={{minHeight: 'calc(100vh - 130px)'}}>
+            <main style={{minHeight: 'calc(100vh - 168px)'}}>
                 <Outlet/>
                 <Footer/>
             </main>

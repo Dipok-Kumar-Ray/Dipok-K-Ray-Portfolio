@@ -4,7 +4,7 @@ import ToolsSliderSection from '../home/tools/ToolsSliderSection';
 
 const Skills = () => {
     return (
-        <div className='mt-20'>
+        <div className=''>
             <ToolsSection/>
             <ToolsSliderSection/>
         </div>

@@ -19,7 +19,7 @@ const Education = () => {
   ];
 
   return (
-    <section className="bg-[#0F172A] text-white py-16 px-6 mt-20">
+    <section className="bg-[#0F172A] text-white py-16 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Section Title */}
         <h2 className="text-3xl font-bold text-green-400 mb-10 text-center">

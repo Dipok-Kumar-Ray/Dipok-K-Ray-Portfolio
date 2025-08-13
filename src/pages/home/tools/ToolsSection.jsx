@@ -97,7 +97,7 @@ const ToolsSection = () => {
   ];
 
   return (
-    <section className="bg-[#0F172A] text-white  relative overflow-hidden mt-20">
+    <section className="bg-[#0F172A] text-white  relative overflow-hidden">
       {/* Background Gradients/Shapes */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-gradient-to-br from-green-400 to-teal-500 rounded-full opacity-10 blur-2xl"></div>
