@@ -12,7 +12,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="bg-[#0F172A] px-6 py-20"
+      className="bg-[#0F172A] px-6 max-w-6xl mx-auto"
       aria-label="About Section"
     >
       <h2 className="text-4xl font-bold text-primary mb-12 text-center">
