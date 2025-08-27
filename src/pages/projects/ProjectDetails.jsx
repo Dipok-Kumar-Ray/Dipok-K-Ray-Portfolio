@@ -1,107 +1,100 @@
-import { useParams } from 'react-router';
-import projectData from '../../pages/projects/data/ProjectData.json';
-import { FaBeer, FaExternalLinkAlt, FaGithub, FaServer, FaUser } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import React from "react";
+import { useParams, Link, useNavigate } from "react-router";
+import projectData from "./data/ProjectData.json"; // ✅ তোমার JSON যেখানে আছে সেই পথ দিন
 
 const ProjectDetails = () => {
-  const { projectId } = useParams();
-  const project = projectData.find((p) => p.id === projectId);
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  // id যদি number হয় তাহলে string এ compare করি
+  const project = projectData.find(p => String(p.id) === String(id));
 
   if (!project) {
-    return <div className="text-red-400 text-center mt-16 text-2xl">🚫 Project not found</div>;
+    return (
+      <div className="min-h-[50vh] flex flex-col items-center justify-center text-center">
+        <h2 className="text-2xl font-semibold mb-2">Project not found</h2>
+        <p className="text-gray-500 mb-6">The project you’re looking for doesn’t exist.</p>
+        <Link
+          to="/projects"
+          className="px-5 py-2 rounded-full bg-gray-800 text-white hover:opacity-90"
+        >
+          Back to Projects
+        </Link>
+      </div>
+    );
   }
 
-  const { name, image, details } = project;
-
   return (
-    <div className="min-h-screen px-4 sm:px-6 md:px-10 py-16 ">
-      <div className="max-w-5xl mx-auto">
-        {/* Project Image */}
-        <motion.img
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          src={image}
-          alt={name}
-          className="w-full rounded-2xl shadow-xl border border-gray-700 mb-10"
+    <div className="max-w-5xl mx-auto py-10 px-4">
+      <button
+        onClick={() => navigate(-1)}
+        className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800 text-white hover:opacity-90"
+      >
+        ← Go Back
+      </button>
+
+      <div className="bg-[#1f2430] rounded-xl overflow-hidden shadow-xl">
+        <img
+          src={project.image}
+          alt={project.name}
+          className="w-full h-72 object-cover"
         />
+        <div className="p-6">
+          <h1 className="text-3xl font-bold text-white mb-2">{project.name}</h1>
+          <p className="text-sm text-gray-400 mb-4">{project.type}</p>
 
-        {/* Project Title */}
-        <h1 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-lime-400">
-          {name}
-        </h1>
+          {project.description && (
+            <p className="text-gray-300 leading-relaxed mb-6">
+              {project.description}
+            </p>
+          )}
 
-        {/* Description */}
-        <motion.p
-          className="text-gray-300 text-lg leading-relaxed mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          {details.description}
-        </motion.p>
+          {project.tech && Array.isArray(project.tech) && (
+            <div className="mb-6">
+              <h3 className="text-white font-semibold mb-2">Tech Stack</h3>
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((t, i) => (
+                  <span key={i} className="px-3 py-1 text-sm rounded-full bg-gray-700 text-gray-100">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
-        {/* Tech Stack */}
-        <div className="mb-10">
-          <h2 className="text-2xl font-semibold mb-3 text-lime-300">Tech Stack</h2>
           <div className="flex flex-wrap gap-3">
-            {details.techStack.map((tech) => (
-              <span
-                key={tech}
-                className="bg-[#1c1f3b] text-sm px-4 py-2 rounded-full text-green-300 border border-green-400/30 shadow-sm"
+            {project.live && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noreferrer"
+                className="px-5 py-2 rounded-full bg-green-600 text-white hover:opacity-90"
               >
-                {tech}
-              </span>
-            ))}
+                Live Site
+              </a>
+            )}
+            {project.client && (
+              <a
+                href={project.client}
+                target="_blank"
+                rel="noreferrer"
+                className="px-5 py-2 rounded-full bg-gray-600 text-white hover:opacity-90"
+              >
+                Client Repo
+              </a>
+            )}
+            {project.server && (
+              <a
+                href={project.server}
+                target="_blank"
+                rel="noreferrer"
+                className="px-5 py-2 rounded-full bg-gray-600 text-white hover:opacity-90"
+              >
+                Server Repo
+              </a>
+            )}
           </div>
         </div>
-
-        {/* Challenges */}
-        <div className="mb-10 border-t border-gray-600 pt-8">
-          <h2 className="text-2xl font-semibold mb-3 text-lime-300">Challenges</h2>
-          <ul className="space-y-2 list-disc list-inside text-gray-400">
-            {details.challenges.map((challenge) => (
-              <li key={challenge}>{challenge}</li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Improvements */}
-        <div className="mb-10 border-t border-gray-600 pt-8">
-          <h2 className="text-2xl font-semibold mb-3 text-lime-300">Potential improvements and future plans</h2>
-          <ul className="space-y-2 list-disc list-inside text-gray-400">
-            {details.improvements.map((improve) => (
-              <li key={improve}>{improve}</li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Action Buttons */}
-        <motion.div
-          className="mt-10 flex flex-wrap gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          <a
-            href={details.liveLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-gradient-to-br from-green-400 to-teal-500 px-5 py-3 rounded-full text-white font-semibold hover:opacity-90 transition"
-          >
-            <FaExternalLinkAlt /> Live Site
-          </a>
-          
-
-           <a
-            href={details.githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-gray-800 px-5 py-3 rounded-full text-white font-semibold hover:bg-gray-700 transition"
-          >
-            <FaGithub /> GitHub Client  <FaUser />
-          </a>
-        </motion.div>
       </div>
     </div>
   );

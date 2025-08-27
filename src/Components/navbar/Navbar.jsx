@@ -79,7 +79,7 @@ const Navbar = () => {
     className="text-2xl md:text-3xl font-extrabold text-primary flex items-center space-x-1"
   >
     <span className="text-secondary">{'<'}</span>
-    <span>Dipok K Ray</span>
+    <span>Dipok K. Ray</span>
     <span className="text-secondary">{' />'}</span>
   </Link>
 </div>
