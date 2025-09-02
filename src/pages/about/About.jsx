@@ -24,15 +24,22 @@ const About = () => {
         <div>
           <p className="text-lg leading-relaxed mb-6">
             Hello! I am{" "}
-            <span className="font-semibold text-primary">Dipok Kumar Ray</span>, a dedicated Diploma graduate in Computer Science & Engineering. I specialize in the MERN stack, focusing on creating efficient, scalable, and maintainable web applications.
+            <span className="font-semibold text-primary">Dipok Kumar Ray</span>,
+            a dedicated Diploma graduate in Computer Science & Engineering. I
+            specialize in the MERN stack, focusing on creating efficient,
+            scalable, and maintainable web applications.
           </p>
 
           <p className="text-lg leading-relaxed mb-6">
-            I am passionate about becoming a competitive programmer and problem solver. I continuously work to enhance my skills and contribute to impactful software projects.
+            I am passionate about becoming a competitive programmer and problem
+            solver. I continuously work to enhance my skills and contribute to
+            impactful software projects.
           </p>
 
           <p className="text-lg leading-relaxed">
-            I am a strong believer in clean code practices, teamwork, and continuous learning, aiming to deliver quality software solutions that meet real-world needs.
+            I am a strong believer in clean code practices, teamwork, and
+            continuous learning, aiming to deliver quality software solutions
+            that meet real-world needs.
           </p>
         </div>
 

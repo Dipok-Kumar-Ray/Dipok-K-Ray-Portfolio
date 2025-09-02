@@ -1,18 +1,20 @@
 import React from "react";
 import { useParams, Link, useNavigate } from "react-router";
-import projectData from "./data/ProjectData.json"; 
+import projectData from "./data/ProjectData.json";
 const ProjectDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
   // id যদি number হয় তাহলে string এ compare করি
-  const project = projectData.find(p => String(p.id) === String(id));
+  const project = projectData.find((p) => String(p.id) === String(id));
 
   if (!project) {
     return (
       <div className="min-h-[50vh] flex flex-col items-center justify-center text-center">
         <h2 className="text-2xl font-semibold mb-2">Project not found</h2>
-        <p className="text-gray-500 mb-6">The project you're looking for doesn’t exist.</p>
+        <p className="text-gray-500 mb-6">
+          The project you're looking for doesn’t exist.
+        </p>
         <Link
           to="/projects"
           className="px-5 py-2 rounded-full bg-gray-800 text-white hover:opacity-90"
@@ -53,7 +55,10 @@ const ProjectDetails = () => {
               <h3 className="text-white font-semibold mb-2">Tech Stack</h3>
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((t, i) => (
-                  <span key={i} className="px-3 py-1 text-sm rounded-full bg-gray-700 text-gray-100">
+                  <span
+                    key={i}
+                    className="px-3 py-1 text-sm rounded-full bg-gray-700 text-gray-100"
+                  >
                     {t}
                   </span>
                 ))}

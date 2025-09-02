@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router";
 import { useState } from "react";
 
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -78,9 +77,9 @@ const Navbar = () => {
           to="/"
           className="text-2xl md:text-3xl font-extrabold text-primary flex items-center space-x-1"
         >
-          <span className="text-secondary">{'<'}</span>
+          <span className="text-secondary">{"<"}</span>
           <span>Dipok K. Ray</span>
-          <span className="text-secondary">{' />'}</span>
+          <span className="text-secondary">{" />"}</span>
         </Link>
       </div>
 
@@ -89,16 +88,27 @@ const Navbar = () => {
         <ul className="menu menu-horizontal text-lg">{navLinks}</ul>
       </div>
 
-      {/* Right: Resume Button */}
-      <div className="flex-1 flex justify-end">
+      {/* Right: Resume Buttons */}
+      <div className="flex-1 flex justify-end gap-2">
+        {/* View Resume */}
         <a
-          href="/resume.pdf" // public ফোল্ডারে রাখতে হবে
+          href="/resume.pdf"
+          className="btn btn-outline btn-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Resume
+        </a>
+
+        {/* Download Resume */}
+        <a
+          href="/resume.pdf"
           download="Dipok_Kumar_Ray_Resume.pdf"
           className="btn btn-primary"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Resume
+          Download
         </a>
       </div>
 
@@ -115,9 +125,21 @@ const Navbar = () => {
 
       {/* Mobile Dropdown Menu */}
       {isOpen && (
-        <div className="absolute top-16 right-4 bg-base-100 shadow-lg rounded-lg w-48">
+        <div className="absolute top-16 right-4 bg-base-100 shadow-lg rounded-lg w-56">
           <ul className="menu p-2">{navLinks}</ul>
-          <div className="p-2 border-t mt-2">
+          <div className="p-2 border-t mt-2 flex flex-col gap-2">
+            {/* View Resume */}
+            <a
+              href="/resume.pdf"
+              className="btn btn-outline btn-primary w-full text-center"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsOpen(false)}
+            >
+              View Resume
+            </a>
+
+            {/* Download Resume */}
             <a
               href="/resume.pdf"
               download="Dipok_Kumar_Ray_Resume.pdf"
@@ -126,7 +148,7 @@ const Navbar = () => {
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
             >
-              Resume
+              Download
             </a>
           </div>
         </div>
