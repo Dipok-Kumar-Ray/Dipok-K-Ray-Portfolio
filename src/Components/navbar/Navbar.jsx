@@ -121,7 +121,7 @@ const Navbar = () => {
           <ul className="menu p-2">{navLinks}</ul>
           <div className="p-2 border-t mt-2">
             <a
-              href="/resume.pdf"
+              href="/file:///C:/Users/Dipok%20Kumar%20Ray/Downloads/Dipok%20Kumar%20Ray-019.pdf"
               download
               className="btn btn-primary w-full text-center"
               target="_blank"
