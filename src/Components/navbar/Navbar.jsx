@@ -1,5 +1,6 @@
-import { Link, NavLink } from "react-router"; 
+import { Link, NavLink } from "react-router";
 import { useState } from "react";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +17,6 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      
       <li>
         <NavLink
           to="/skills"
@@ -57,7 +57,6 @@ const Navbar = () => {
           Contact
         </NavLink>
       </li>
-
       <li>
         <NavLink
           to="/about"
@@ -73,29 +72,28 @@ const Navbar = () => {
 
   return (
     <nav className="navbar bg-base-100 shadow-md fixed top-0 mb-20 left-0 w-full z-50 px-4 md:px-12">
-<div className="flex-1">
-  <Link
-    to="/"
-    className="text-2xl md:text-3xl font-extrabold text-primary flex items-center space-x-1"
-  >
-    <span className="text-secondary">{'<'}</span>
-    <span>Dipok K. Ray</span>
-    <span className="text-secondary">{' />'}</span>
-  </Link>
-</div>
+      {/* Left Logo */}
+      <div className="flex-1">
+        <Link
+          to="/"
+          className="text-2xl md:text-3xl font-extrabold text-primary flex items-center space-x-1"
+        >
+          <span className="text-secondary">{'<'}</span>
+          <span>Dipok K. Ray</span>
+          <span className="text-secondary">{' />'}</span>
+        </Link>
+      </div>
 
-
-  <div className="hidden md:flex justify-center">
-  <ul className="menu menu-horizontal text-lg">{navLinks}</ul>
-</div>
-
-
+      {/* Center Nav Links */}
+      <div className="hidden md:flex justify-center">
+        <ul className="menu menu-horizontal text-lg">{navLinks}</ul>
+      </div>
 
       {/* Right: Resume Button */}
       <div className="flex-1 flex justify-end">
         <a
-          href="/resume.pdf" // তোমার রিজিউমের পাথ এখানে দিবে
-          download
+          href="/resume.pdf" // public ফোল্ডারে রাখতে হবে
+          download="Dipok_Kumar_Ray_Resume.pdf"
           className="btn btn-primary"
           target="_blank"
           rel="noopener noreferrer"
@@ -121,8 +119,8 @@ const Navbar = () => {
           <ul className="menu p-2">{navLinks}</ul>
           <div className="p-2 border-t mt-2">
             <a
-              href="/file:///C:/Users/Dipok%20Kumar%20Ray/Downloads/Dipok%20Kumar%20Ray-019.pdf"
-              download
+              href="/resume.pdf"
+              download="Dipok_Kumar_Ray_Resume.pdf"
               className="btn btn-primary w-full text-center"
               target="_blank"
               rel="noopener noreferrer"

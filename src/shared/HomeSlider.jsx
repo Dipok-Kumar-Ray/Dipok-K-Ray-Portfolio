@@ -55,6 +55,7 @@ const HomeSlider = () => {
             </a>
             <a
               href="/resume.pdf"
+              download="Dipok_Kumar_Ray_Resume.pdf"
               className="border border-gray-500 px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition"
             >
               Download Resume
