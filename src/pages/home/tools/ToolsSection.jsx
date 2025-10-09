@@ -97,7 +97,7 @@ const ToolsSection = () => {
   ];
 
   return (
-    <section className="bg-[#0F172A] text-white  relative overflow-hidden">
+    <section className="bg-[#0F172A] text-white  relative overflow-hidden ">
       {/* Background Gradients/Shapes */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-gradient-to-br from-green-400 to-teal-500 rounded-full opacity-10 blur-2xl"></div>
@@ -107,8 +107,8 @@ const ToolsSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Top Section: Title and Subtitle */}
         <div className="text-center mb-12 lg:mb-20">
-          <h2 className="text-green-400 text-3xl font-bold mb-2 flex items-center justify-center lg:text-4xl lg:font-bold ">
-            <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+          <h2 className="text-green-400 text-3xl font-bold mt-17 mb-2 flex items-center justify-center lg:text-4xl lg:font-bold ">
+            {/* <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span> */}
            My Skills
           </h2>
           <h2 className="text-xl lg:text-2xl font-bold leading-tight">

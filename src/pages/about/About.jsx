@@ -12,10 +12,10 @@ const About = () => {
   return (
     <section
       id="about"
-      className="bg-[#0F172A] px-5 max-w-7xl mx-auto lg:max-w-7xl"
+      className="bg-[#0F172A] mx-auto lg:max-w-full px-19"
       aria-label="About Section"
     >
-      <h2 className="text-4xl font-bold text-primary mb-12 text-center">
+      <h2 className="text-4xl font-bold text-primary mb-12 text-center ">
         About Me
       </h2>
 
