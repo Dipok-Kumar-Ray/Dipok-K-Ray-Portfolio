@@ -55,8 +55,7 @@ const HomeSlider = () => {
               View My Work
             </a>
             <a
-              href="/resume.pdf"
-              download="Dipok_Kumar_Ray_Resume.pdf"
+              href="https://drive.google.com/drive/folders/1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e?usp=sharing"
               className="border border-gray-500 px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition"
             >
               Download Resume

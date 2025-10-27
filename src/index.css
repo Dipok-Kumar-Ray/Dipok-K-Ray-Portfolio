@@ -2,6 +2,9 @@
 
 @plugin "daisyui";
 
+html {
+  scroll-behavior: smooth;
+}
 
 @keyframes gradientMove {
   0% {
@@ -20,6 +23,3 @@
   background-size: 400% 400%;
   animation: gradientMove 12s ease infinite;
 }
-
-
-

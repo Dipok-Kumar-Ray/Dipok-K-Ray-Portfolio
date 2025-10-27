@@ -1,8 +1,59 @@
-import { Link, NavLink } from "react-router";
-import { useState } from "react";
+import { Link, NavLink, useNavigate, useLocation } from "react-router";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Handle smooth scrolling to sections
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      // Calculate offset for fixed navbar
+      const navbarHeight = 80;
+      const elementPosition = section.offsetTop;
+      const offsetPosition = elementPosition - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  // Handle navigation to home page sections
+  const handleHomeSectionClick = (e, sectionId) => {
+    e.preventDefault();
+    // Close mobile menu
+    setIsOpen(false);
+    
+    // If we're already on the home page, scroll directly
+    if (location.pathname === '/') {
+      scrollToSection(sectionId);
+    } else {
+      // Navigate to home page first
+      navigate('/');
+      
+      // Scroll to section after a short delay to ensure page loads
+      setTimeout(() => {
+        scrollToSection(sectionId);
+      }, 100);
+    }
+  };
+
+  // Handle hash changes and initial load
+  useEffect(() => {
+    // Check if there's a hash in the URL
+    if (location.hash) {
+      // Remove the # symbol
+      const sectionId = location.hash.substring(1);
+      // Scroll to the section after a short delay to ensure page loads
+      setTimeout(() => {
+        scrollToSection(sectionId);
+      }, 100);
+    }
+  }, [location]);
 
   const navLinks = (
     <>
@@ -18,48 +69,40 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink
-          to="/skills"
-          className={({ isActive }) =>
-            isActive ? "text-primary font-semibold" : "hover:text-primary"
-          }
-          onClick={() => setIsOpen(false)}
+        <a
+          href="/#skills"
+          onClick={(e) => handleHomeSectionClick(e, 'skills')}
+          className="hover:text-primary"
         >
           Skills
-        </NavLink>
+        </a>
       </li>
       <li>
-        <NavLink
-          to="/education"
-          className={({ isActive }) =>
-            isActive ? "text-primary font-semibold" : "hover:text-primary"
-          }
-          onClick={() => setIsOpen(false)}
+        <a
+          href="/#education"
+          onClick={(e) => handleHomeSectionClick(e, 'education')}
+          className="hover:text-primary"
         >
           Education
-        </NavLink>
+        </a>
       </li>
       <li>
-        <NavLink
-          to="/projects"
-          className={({ isActive }) =>
-            isActive ? "text-primary font-semibold" : "hover:text-primary"
-          }
-          onClick={() => setIsOpen(false)}
+        <a
+          href="/#projects"
+          onClick={(e) => handleHomeSectionClick(e, 'projects')}
+          className="hover:text-primary"
         >
           Projects
-        </NavLink>
+        </a>
       </li>
       <li>
-        <NavLink
-          to="/contact-info"
-          className={({ isActive }) =>
-            isActive ? "text-primary font-semibold" : "hover:text-primary"
-          }
-          onClick={() => setIsOpen(false)}
+        <a
+          href="/#contact"
+          onClick={(e) => handleHomeSectionClick(e, 'contact')}
+          className="hover:text-primary"
         >
           Contact
-        </NavLink>
+        </a>
       </li>
       <li>
         <NavLink
@@ -98,7 +141,7 @@ const Navbar = () => {
       {/* Right: Resume Buttons (Desktop) */}
       <div className="hidden md:flex flex-1 justify-end gap-2">
         <a
-          href="/resume.pdf"
+          href="https://drive.google.com/drive/folders/1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e?usp=sharing"
           className="btn btn-outline btn-primary"
           target="_blank"
           rel="noopener noreferrer"
@@ -106,8 +149,7 @@ const Navbar = () => {
           View Resume
         </a>
         <a
-          href="/resume.pdf"
-          download="Dipok_Kumar_Ray_Resume.pdf"
+          href="https://drive.google.com/drive/folders/1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e?usp=sharing"
           className="btn btn-primary"
           target="_blank"
           rel="noopener noreferrer"
@@ -137,7 +179,7 @@ const Navbar = () => {
 
         <div className="p-4 flex flex-col gap-2">
           <a
-            href="/resume.pdf"
+            href="https://drive.google.com/drive/folders/1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e?usp=sharing"
             className="btn btn-outline btn-primary w-full text-center"
             target="_blank"
             rel="noopener noreferrer"
@@ -147,8 +189,7 @@ const Navbar = () => {
           </a>
 
           <a
-            href="/resume.pdf"
-            download="Dipok_Kumar_Ray_Resume.pdf"
+            href="https://drive.google.com/drive/folders/1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e?usp=sharing"
             className="btn btn-primary w-full text-center"
             target="_blank"
             rel="noopener noreferrer"
@@ -158,6 +199,7 @@ const Navbar = () => {
           </a>
         </div>
       </div>
+
     </nav>
   );
 };
