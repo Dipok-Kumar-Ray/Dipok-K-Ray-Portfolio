@@ -7,9 +7,29 @@ import {
 import { Typewriter } from "react-simple-typewriter";
 import ProfilePhoto from "../assets/profile.png";
 
+// Function to handle resume download
+const handleResumeDownload = () => {
+  // Create a temporary link element
+  const link = document.createElement('a');
+  link.href = 'https://drive.google.com/uc?export=download&id=1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e';
+  link.download = 'Dipok_Kumar_Ray_Resume.pdf';
+  link.target = '_blank';
+  
+  // Append to the body, click it, and then remove it
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
+// Function to handle resume view
+const handleResumeView = () => {
+  // Open the resume in a new tab
+  window.open('https://drive.google.com/file/d/1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e/view?usp=sharing', '_blank');
+};
+
 const HomeSlider = () => {
   return (
-    <section className="bg-[#0F172A] text-white min-h-screen flex items-center px-4 sm:px-6 py-10">
+    <section id="home" className="bg-[#0F172A] text-white min-h-screen flex items-center px-4 sm:px-6 py-10">
       <div className="max-w-6xl w-full flex flex-col-reverse md:flex-row items-center gap-12 mx-auto">
 
         {/* ================= Left Content ================= */}
@@ -54,12 +74,12 @@ const HomeSlider = () => {
             >
               View My Work
             </a>
-            <a
-              href="https://drive.google.com/drive/folders/1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e?usp=sharing"
+            <button
+              onClick={handleResumeDownload}
               className="border border-gray-500 px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition"
             >
               Download Resume
-            </a>
+            </button>
           </div>
 
           {/* === Social Icons === */}

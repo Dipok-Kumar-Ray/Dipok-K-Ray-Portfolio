@@ -12,6 +12,11 @@ const ProjectsSection = () => {
     setProjects(projectData);
   }, []);
 
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <section
       id="projects"

@@ -1,6 +1,11 @@
-import React from "react";
+import { useEffect } from "react";
 
 const Education = () => {
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const educationData = [
     {
       degree: "Diploma in Computer Science & Engineering",

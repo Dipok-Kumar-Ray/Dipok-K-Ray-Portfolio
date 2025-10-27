@@ -1,6 +1,26 @@
 import { Link, NavLink, useNavigate, useLocation } from "react-router";
 import { useState, useEffect } from "react";
 
+// Function to handle resume download
+const handleResumeDownload = () => {
+  // Create a temporary link element
+  const link = document.createElement('a');
+  link.href = 'https://drive.google.com/uc?export=download&id=1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e';
+  link.download = 'Dipok_Kumar_Ray_Resume.pdf';
+  link.target = '_blank';
+  
+  // Append to the body, click it, and then remove it
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
+// Function to handle resume view
+const handleResumeView = () => {
+  // Open the resume in a new tab
+  window.open('https://drive.google.com/file/d/1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e/view?usp=sharing', '_blank');
+};
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
@@ -17,6 +37,12 @@ const Navbar = () => {
 
       window.scrollTo({
         top: offsetPosition,
+        behavior: "smooth"
+      });
+    } else {
+      // If section not found, scroll to top
+      window.scrollTo({
+        top: 0,
         behavior: "smooth"
       });
     }
@@ -52,21 +78,22 @@ const Navbar = () => {
       setTimeout(() => {
         scrollToSection(sectionId);
       }, 100);
+    } else if (location.pathname === '/' && !location.hash) {
+      // If we're on the home page without a hash, scroll to top
+      window.scrollTo({ top: 0 });
     }
   }, [location]);
 
   const navLinks = (
     <>
       <li>
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive ? "text-primary font-semibold" : "hover:text-primary"
-          }
-          onClick={() => setIsOpen(false)}
+        <a
+          href="/#home"
+          onClick={(e) => handleHomeSectionClick(e, 'home')}
+          className="hover:text-primary"
         >
           Home
-        </NavLink>
+        </a>
       </li>
       <li>
         <a
@@ -125,7 +152,13 @@ const Navbar = () => {
         <Link
           to="/"
           className="text-2xl md:text-3xl font-extrabold text-primary flex items-center space-x-1"
-          onClick={() => setIsOpen(false)}
+          onClick={() => {
+            setIsOpen(false);
+            // Scroll to top when logo is clicked
+            if (location.pathname === '/') {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
         >
           <span className="text-secondary">{"<"}</span>
           <span>Dipok K. Ray</span>
@@ -140,22 +173,18 @@ const Navbar = () => {
 
       {/* Right: Resume Buttons (Desktop) */}
       <div className="hidden md:flex flex-1 justify-end gap-2">
-        <a
-          href="https://drive.google.com/drive/folders/1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e?usp=sharing"
+        <button
+          onClick={handleResumeView}
           className="btn btn-outline btn-primary"
-          target="_blank"
-          rel="noopener noreferrer"
         >
           View Resume
-        </a>
-        <a
-          href="https://drive.google.com/drive/folders/1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e?usp=sharing"
+        </button>
+        <button
+          onClick={handleResumeDownload}
           className="btn btn-primary"
-          target="_blank"
-          rel="noopener noreferrer"
         >
           Download
-        </a>
+        </button>
       </div>
 
       {/* Mobile Menu Button */}
@@ -178,25 +207,25 @@ const Navbar = () => {
         <ul className="menu p-4 space-y-2 text-lg border-b">{navLinks}</ul>
 
         <div className="p-4 flex flex-col gap-2">
-          <a
-            href="https://drive.google.com/drive/folders/1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e?usp=sharing"
+          <button
+            onClick={() => {
+              handleResumeView();
+              setIsOpen(false);
+            }}
             className="btn btn-outline btn-primary w-full text-center"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setIsOpen(false)}
           >
             View Resume
-          </a>
+          </button>
 
-          <a
-            href="https://drive.google.com/drive/folders/1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e?usp=sharing"
+          <button
+            onClick={() => {
+              handleResumeDownload();
+              setIsOpen(false);
+            }}
             className="btn btn-primary w-full text-center"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setIsOpen(false)}
           >
             Download
-          </a>
+          </button>
         </div>
       </div>
 

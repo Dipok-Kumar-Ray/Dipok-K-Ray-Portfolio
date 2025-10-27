@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 const skills = [
   "MERN Stack Development",
   "Competitive Programming",
@@ -9,6 +11,11 @@ const skills = [
 ];
 
 const About = () => {
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <section
       id="about"
