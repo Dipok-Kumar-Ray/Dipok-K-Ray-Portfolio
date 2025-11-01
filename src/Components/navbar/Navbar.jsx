@@ -3,23 +3,28 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Function to handle resume download
+// Function to handle resume download
 const handleResumeDownload = () => {
+  const fileId = "1yNhc_6orvaQrV3TYi8ntRwf2xXPqTAMa"; 
+
+  // Direct download link
+  const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+
   // Create a temporary link element
-  const link = document.createElement('a');
-  link.href = 'https://drive.google.com/uc?export=download&id=1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e';
-  link.download = 'Dipok_Kumar_Ray_Resume.pdf';
-  link.target = '_blank';
-  
-  // Append to the body, click it, and then remove it
+  const link = document.createElement("a");
+  link.href = downloadUrl;
+  link.download = "Dipok_Kumar_Ray_Resume.pdf"; 
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 };
 
+
+
 // Function to handle resume view
 const handleResumeView = () => {
   // Open the resume in a new tab
-  window.open('https://drive.google.com/file/d/1pGcYvWkBsZQ0wnm-VXD_16aLxiLpaG1e/view?usp=sharing', '_blank');
+  window.open('https://drive.google.com/file/d/1yNhc_6orvaQrV3TYi8ntRwf2xXPqTAMa/view?usp=sharing', '_blank');
 };
 
 const Navbar = () => {
@@ -181,11 +186,12 @@ const Navbar = () => {
           View Resume
         </button>
         <button
-          onClick={handleResumeDownload}
-          className="btn btn-primary hover:bg-green-500 transition-all duration-300"
-        >
-          Download
-        </button>
+  onClick={handleResumeDownload}
+  className="btn btn-primary hover:bg-green-500 transition-all duration-300"
+>
+  Download Resume
+</button>
+
       </div>
 
       {/* Mobile Menu Button */}
