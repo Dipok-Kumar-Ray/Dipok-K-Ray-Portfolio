@@ -1,5 +1,6 @@
 import { Link, NavLink, useNavigate, useLocation } from "react-router";
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Function to handle resume download
 const handleResumeDownload = () => {
@@ -90,7 +91,7 @@ const Navbar = () => {
         <a
           href="/#home"
           onClick={(e) => handleHomeSectionClick(e, 'home')}
-          className="hover:text-primary"
+          className="hover:text-primary transition-colors duration-300"
         >
           Home
         </a>
@@ -99,7 +100,7 @@ const Navbar = () => {
         <a
           href="/#skills"
           onClick={(e) => handleHomeSectionClick(e, 'skills')}
-          className="hover:text-primary"
+          className="hover:text-primary transition-colors duration-300"
         >
           Skills
         </a>
@@ -108,7 +109,7 @@ const Navbar = () => {
         <a
           href="/#education"
           onClick={(e) => handleHomeSectionClick(e, 'education')}
-          className="hover:text-primary"
+          className="hover:text-primary transition-colors duration-300"
         >
           Education
         </a>
@@ -117,7 +118,7 @@ const Navbar = () => {
         <a
           href="/#projects"
           onClick={(e) => handleHomeSectionClick(e, 'projects')}
-          className="hover:text-primary"
+          className="hover:text-primary transition-colors duration-300"
         >
           Projects
         </a>
@@ -126,7 +127,7 @@ const Navbar = () => {
         <a
           href="/#contact"
           onClick={(e) => handleHomeSectionClick(e, 'contact')}
-          className="hover:text-primary"
+          className="hover:text-primary transition-colors duration-300"
         >
           Contact
         </a>
@@ -135,7 +136,7 @@ const Navbar = () => {
         <NavLink
           to="/about"
           className={({ isActive }) =>
-            isActive ? "text-primary font-semibold" : "hover:text-primary"
+            isActive ? "text-primary font-semibold" : "hover:text-primary transition-colors duration-300"
           }
           onClick={() => setIsOpen(false)}
         >
@@ -146,7 +147,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="navbar bg-base-100 shadow-md fixed top-0 left-0 w-full z-50 px-4 md:px-12">
+    <nav className="navbar bg-[#0F172A] shadow-md fixed top-0 left-0 w-full z-50 px-4 md:px-12">
       {/* Left Logo */}
       <div className="flex-1">
         <Link
@@ -160,28 +161,28 @@ const Navbar = () => {
             }
           }}
         >
-          <span className="text-secondary">{"<"}</span>
+          <span className="text-green-400">{"<"}</span>
           <span>Dipok K. Ray</span>
-          <span className="text-secondary">{" />"}</span>
+          <span className="text-green-400">{" />"}</span>
         </Link>
       </div>
 
       {/* Center Nav Links (Desktop Only) */}
       <div className="hidden md:flex justify-center">
-        <ul className="menu menu-horizontal text-lg">{navLinks}</ul>
+        <ul className="menu menu-horizontal text-lg flex space-x-8">{navLinks}</ul>
       </div>
 
       {/* Right: Resume Buttons (Desktop) */}
       <div className="hidden md:flex flex-1 justify-end gap-2">
         <button
           onClick={handleResumeView}
-          className="btn btn-outline btn-primary"
+          className="btn btn-outline btn-primary hover:bg-green-400 hover:text-black transition-all duration-300"
         >
           View Resume
         </button>
         <button
           onClick={handleResumeDownload}
-          className="btn btn-primary"
+          className="btn btn-primary hover:bg-green-500 transition-all duration-300"
         >
           Download
         </button>
@@ -191,7 +192,7 @@ const Navbar = () => {
       <div className="md:hidden ml-4">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="btn btn-ghost text-3xl focus:outline-none"
+          className="btn btn-ghost text-3xl focus:outline-none text-white"
           aria-label="Toggle Menu"
         >
           {isOpen ? "✖" : "☰"}
@@ -199,36 +200,41 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Dropdown Menu */}
-      <div
-        className={`absolute top-16 right-0 w-full bg-base-100 shadow-lg transition-all duration-300 ease-in-out md:hidden ${
-          isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0 overflow-hidden"
-        }`}
-      >
-        <ul className="menu p-4 space-y-2 text-lg border-b">{navLinks}</ul>
-
-        <div className="p-4 flex flex-col gap-2">
-          <button
-            onClick={() => {
-              handleResumeView();
-              setIsOpen(false);
-            }}
-            className="btn btn-outline btn-primary w-full text-center"
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="absolute top-16 right-0 w-full bg-[#0F172A] shadow-lg transition-all duration-300 ease-in-out md:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
           >
-            View Resume
-          </button>
+            <ul className="menu p-4 space-y-2 text-lg border-b border-gray-700">{navLinks}</ul>
 
-          <button
-            onClick={() => {
-              handleResumeDownload();
-              setIsOpen(false);
-            }}
-            className="btn btn-primary w-full text-center"
-          >
-            Download
-          </button>
-        </div>
-      </div>
+            <div className="p-4 flex flex-col gap-2">
+              <button
+                onClick={() => {
+                  handleResumeView();
+                  setIsOpen(false);
+                }}
+                className="btn btn-outline btn-primary w-full text-center hover:bg-green-400 hover:text-black transition-all duration-300"
+              >
+                View Resume
+              </button>
 
+              <button
+                onClick={() => {
+                  handleResumeDownload();
+                  setIsOpen(false);
+                }}
+                className="btn btn-primary w-full text-center hover:bg-green-500 transition-all duration-300"
+              >
+                Download
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

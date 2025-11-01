@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 const Education = () => {
   useEffect(() => {
@@ -24,19 +25,30 @@ const Education = () => {
   ];
 
   return (
-    <section id="education" className="bg-[#0F172A] text-white py-16 px-6 lg:max-w-7xl">
+    <section id="education" className="bg-[#0F172A] text-white py-16 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         {/* Section Title */}
-        <h2 className="text-3xl font-bold text-green-400 mb-10 text-center">
+        <motion.h2 
+          className="text-3xl font-bold text-green-400 mb-10 text-center"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           Education
-        </h2>
+        </motion.h2>
 
         {/* Education Cards */}
         <div className="grid md:grid-cols-2 gap-8">
           {educationData.map((edu, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-[#1E293B] p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-700 hover:border-green-400"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              whileHover={{ y: -10 }}
             >
               <h3 className="text-xl font-semibold text-green-400 mb-2">
                 {edu.degree}
@@ -48,7 +60,7 @@ const Education = () => {
               <p className="text-gray-400 leading-relaxed">
                 {edu.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

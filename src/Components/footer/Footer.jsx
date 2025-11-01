@@ -10,37 +10,57 @@ const Footer = () => {
 
   return (
     <motion.footer
-      className="bg-base-200 dark:bg-gray-900 text-base-content dark:text-gray-300 p-6"
+      className="bg-[#0F172A] text-gray-300 p-6 border-t border-gray-800"
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         
         {/* Logo / Name */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <Link
             to="/"
-            className="text-lg md:text-xl font-extrabold text-primary flex items-center space-x-1"
+            className="text-lg md:text-xl font-extrabold text-white flex items-center space-x-1"
           >
-            <span className="text-secondary">{'<'}</span>
+            <span className="text-green-400">{'<'}</span>
             <span>Dipok K. Ray</span>
-            <span className="text-secondary">{' />'}</span>
+            <span className="text-green-400">{' />'}</span>
           </Link>
-        </div>
+          <p className="text-sm text-gray-400 mt-1">MERN Stack Developer</p>
+        </motion.div>
 
         {/* Quick Links */}
-        <div className="flex flex-wrap gap-4 text-sm md:text-base">
-          <Link to="/about" className="hover:text-green-400">About</Link>
-          <Link to="/projects" className="hover:text-green-400">Projects</Link>
-          <Link to="/contact-info" className="hover:text-green-400">Contact</Link>
-        </div>
+        <motion.div 
+          className="flex flex-wrap gap-4 text-sm md:text-base"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <Link to="/about" className="hover:text-green-400 transition-colors duration-300">About</Link>
+          <Link to="/projects" className="hover:text-green-400 transition-colors duration-300">Projects</Link>
+          <Link to="/contact-info" className="hover:text-green-400 transition-colors duration-300">Contact</Link>
+        </motion.div>
 
         {/* Social Icons */}
-        <div className="flex gap-5 text-2xl">
+        <motion.div 
+          className="flex gap-5 text-2xl"
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           <a
             href="mailto:dipok7316@gmail.com"
             className="hover:text-green-400 transition-transform transform hover:scale-110"
+            aria-label="Email"
           >
             <FaEnvelope />
           </a>
@@ -49,6 +69,7 @@ const Footer = () => {
             target="_blank"
             rel="noreferrer"
             className="hover:text-green-400 transition-transform transform hover:scale-110"
+            aria-label="Facebook"
           >
             <FaFacebook />
           </a>
@@ -57,6 +78,7 @@ const Footer = () => {
             target="_blank"
             rel="noreferrer"
             className="hover:text-green-400 transition-transform transform hover:scale-110"
+            aria-label="GitHub"
           >
             <FaGithub />
           </a>
@@ -65,6 +87,7 @@ const Footer = () => {
             target="_blank"
             rel="noreferrer"
             className="hover:text-green-400 transition-transform transform hover:scale-110"
+            aria-label="LinkedIn"
           >
             <FaLinkedin />
           </a>
@@ -73,27 +96,34 @@ const Footer = () => {
             target="_blank"
             rel="noreferrer"
             className="hover:text-green-400 transition-transform transform hover:scale-110"
+            aria-label="Stack Overflow"
           >
             <FaStackOverflow />
           </a>
-        </div>
+        </motion.div>
       </div>
 
       {/* 🔹 Horizontal Row */}
-      <hr className="border-0 h-[1px] bg-gradient-to-r from-transparent via-gray-500 to-transparent my-6" />
+      <hr className="border-0 h-[1px] bg-gradient-to-r from-transparent via-gray-700 to-transparent my-6" />
 
       {/* Bottom Section */}
-      <div className="flex flex-col md:flex-row justify-between items-center text-sm">
+      <motion.div 
+        className="flex flex-col md:flex-row justify-between items-center text-sm"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+      >
         <p>© {new Date().getFullYear()} Dipok Kumar Ray. All Rights Reserved.</p>
         
         {/* Back to Top Button */}
         <button
           onClick={scrollToTop}
-          className="mt-4 md:mt-0 flex items-center gap-1 hover:text-green-400 transition-transform transform hover:scale-110"
+          className="mt-4 md:mt-0 flex items-center gap-1 hover:text-green-400 transition-all duration-300 group"
         >
-          <FaArrowUp /> Back to Top
+          <FaArrowUp className="group-hover:-translate-y-1 transition-transform duration-300" /> Back to Top
         </button>
-      </div>
+      </motion.div>
     </motion.footer>
   );
 };

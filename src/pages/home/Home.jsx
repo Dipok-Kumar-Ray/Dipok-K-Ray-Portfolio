@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import HomeSlider from '../../shared/HomeSlider';
 import ToolsSection from './tools/ToolsSection';
 import ToolsSliderSection from './tools/ToolsSliderSection';
@@ -8,8 +8,13 @@ import ContactInfo from '../contact/ContactInfo';
 import ProjectsSection from '../projects/ProjectsSection';
 
 const Home = () => {
+    useEffect(() => {
+        // Scroll to top when component mounts
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, []);
+
     return (
-        <div>
+        <div className="bg-[#0F172A]">
            <HomeSlider/>
            <About/>
            <ToolsSection/>

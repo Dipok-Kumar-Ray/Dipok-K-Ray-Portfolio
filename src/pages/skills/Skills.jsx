@@ -9,7 +9,7 @@ const Skills = () => {
     }, []);
 
     return (
-        <div className=''>
+        <div className='bg-[#0F172A]'>
             <ToolsSection/>
             <ToolsSliderSection/>
         </div>
