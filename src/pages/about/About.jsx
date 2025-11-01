@@ -34,13 +34,14 @@ const About = () => {
           About Me
         </motion.h2>
 
-        <div className="space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-12 text-white">
+        <div className="space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-16 text-white items-center">
           {/* Left Side: Bio Text */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="md:pr-8"
           >
             <p className="text-lg leading-relaxed mb-6">
               Hello! I am{" "}
@@ -69,11 +70,12 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="md:pl-8"
           >
             <h3 className="text-2xl font-semibold mb-6 text-primary">
               Skills & Expertise
             </h3>
-            <ul className="space-y-2 text-white text-base">
+            <ul className="space-y-3 text-white text-base">
               {skills.map((skill, idx) => (
                 <motion.li
                   key={idx}
@@ -83,8 +85,8 @@ const About = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: idx * 0.1 }}
                 >
-                  <span className="text-green-400 mr-2">✓</span>
-                  {skill}
+                  <span className="text-green-400 mr-3 mt-1">✓</span>
+                  <span>{skill}</span>
                 </motion.li>
               ))}
             </ul>

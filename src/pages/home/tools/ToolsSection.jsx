@@ -61,37 +61,37 @@ const ToolsSection = () => {
     {
       icon: <SiReact className="text-[#61DAFB] w-10 h-10" />,
       name: 'React',
-      percentage: 95,
+      percentage: 75,
       description: 'Modern frontend development using reusable components.',
     },
     {
       icon: <SiTailwindcss className="text-[#38B2AC] w-10 h-10" />,
       name: 'Tailwind CSS',
-      percentage: 93,
+      percentage: 70,
       description: 'Utility-first CSS framework for rapid UI styling.',
     },
     {
       icon: <SiFirebase className="text-[#FFCA28] w-10 h-10" />,
       name: 'Firebase',
-      percentage: 90,
+      percentage: 65,
       description: 'Authentication, hosting, and Firestore database.',
     },
     {
       icon: <SiMongodb className="text-[#4DB33D] w-10 h-10" />,
       name: 'MongoDB',
-      percentage: 88,
+      percentage: 60,
       description: 'NoSQL database for storing flexible data structures.',
     },
     {
       icon: <SiExpress className="text-white w-10 h-10" />,
       name: 'Express.js',
-      percentage: 85,
+      percentage: 55,
       description: 'Backend API development with Node.js support.',
     },
     {
       icon: <FaKey className="text-yellow-400 w-10 h-10" />,
       name: "JWT",
-      percentage: 87,
+      percentage: 60,
       description: "Secure authentication with JSON Web Tokens.",
     },
   ];
@@ -131,18 +131,18 @@ const ToolsSection = () => {
                            hover:before:opacity-100 before:transition-opacity before:duration-300 before:z-0"
               >
                 {/* Icon */}
-                <div className="flex-shrink-0 relative z-10">
+                <div className="flex-shrink-0 relative z-10 group-hover:text-green-400 transition-colors duration-300">
                   {tool.icon}
                 </div>
 
                 {/* Tool Name and Description */}
                 <div className="flex-grow relative z-10">
-                  <h3 className="text-xl font-semibold text-white">{tool.name}</h3>
-                  <p className="text-gray-400 text-sm">{tool.description}</p>
+                  <h3 className="text-xl font-semibold text-white group-hover:text-green-400 transition-colors duration-300">{tool.name}</h3>
+                  <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">{tool.description}</p>
                 </div>
 
                 {/* Percentage Counter */}
-                <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-teal-500 flex-shrink-0 relative z-10">
+                <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-teal-500 flex-shrink-0 relative z-10 group-hover:from-green-300 group-hover:to-teal-300 transition-all duration-300">
                   {count}%
                 </div>
               </div>

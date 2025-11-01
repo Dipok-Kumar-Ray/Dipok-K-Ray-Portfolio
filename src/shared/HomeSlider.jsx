@@ -51,9 +51,9 @@ const HomeSlider = () => {
             <span className="block sm:inline text-green-400 mt-2 sm:mt-0">
               <Typewriter
                 words={[
+                  "Frontend Developer",
                   "JavaScript Developer",
                   "MERN Stack Developer",
-                  "Competitive Programmer",
                 ]}
                 loop={0}
                 cursor
@@ -90,12 +90,6 @@ const HomeSlider = () => {
             >
               View My Work
             </a>
-            <button
-              onClick={handleResumeDownload}
-              className="border border-gray-500 px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition transform hover:scale-105"
-            >
-              Download Resume
-            </button>
           </motion.div>
 
           {/* === Social Icons === */}
@@ -150,14 +144,14 @@ const HomeSlider = () => {
           <div className="relative w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 lg:w-72 lg:h-72">
             {/* === Gradient Border === */}
             <motion.div 
-              className="rounded-xl p-1 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600"
+              className="rounded-full p-1 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <img
                 src={ProfilePhoto}
                 alt="Dipok"
-                className="block rounded-xl w-full h-full object-cover shadow-lg"
+                className="block rounded-full w-full h-full object-cover shadow-lg"
               />
             </motion.div>
 
