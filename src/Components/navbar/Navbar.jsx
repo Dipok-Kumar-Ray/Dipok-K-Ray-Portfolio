@@ -152,12 +152,12 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="navbar bg-[#0F172A] shadow-md fixed top-0 left-0 w-full z-50 px-4 md:px-12">
+    <nav className="navbar bg-[#0F172A] shadow-md fixed top-0 left-0 w-full z-50 px-4 md:px-8">
       {/* Left Logo */}
       <div className="flex-1">
         <Link
           to="/"
-          className="text-2xl md:text-3xl font-extrabold text-primary flex items-center space-x-1"
+          className="text-xl md:text-2xl font-extrabold text-primary flex items-center space-x-1 whitespace-nowrap"
           onClick={() => {
             setIsOpen(false);
             // Scroll to top when logo is clicked
@@ -174,22 +174,22 @@ const Navbar = () => {
 
       {/* Center Nav Links (Desktop Only) */}
       <div className="hidden md:flex justify-center">
-        <ul className="menu menu-horizontal text-lg flex space-x-8">{navLinks}</ul>
+        <ul className="menu menu-horizontal text-lg flex space-x-6">{navLinks}</ul>
       </div>
 
       {/* Right: Resume Buttons (Desktop) */}
       <div className="hidden md:flex flex-1 justify-end gap-2">
         <button
           onClick={handleResumeView}
-          className="btn btn-outline btn-primary hover:bg-green-400 hover:text-black transition-all duration-300"
+          className="btn btn-outline btn-primary hover:bg-green-400 hover:text-black transition-all duration-300 text-sm"
         >
           View Resume
         </button>
         <button
   onClick={handleResumeDownload}
-  className="btn btn-primary hover:bg-green-500 transition-all duration-300"
+  className="btn btn-primary hover:bg-green-500 transition-all duration-300 text-sm"
 >
-  Download Resume
+  Download
 </button>
 
       </div>
