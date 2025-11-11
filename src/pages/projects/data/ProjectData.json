@@ -1,6 +1,17 @@
 [
-  {
+    {
     "id": 1,
+    "name": "RideX - Ride-sharing Platform",
+    "type": "Full Stack Web App",
+    "description": "RideX is a smart ride-sharing platform that connects riders and drivers for safe, fast, and affordable city travel.",
+    "tech": ["Next.js", "React.js", "ShadCN", "Socket.io", "Node.js", "Express", "MongoDB", "Chart.js", "Material UI"],
+    "image": "https://i.ibb.co.com/zHF5FDM9/Ride-X-project.jpg",
+    "client": "https://github.com/rubel6610/RideX-Frontend",
+    "server": "https://github.com/rubel6610/RideX-backend",
+    "live": "https://ridex-ride-sharing.vercel.app"
+  },
+  {
+    "id": 2,
     "name": "MealBridge - Food Waste Platform",
     "type": "Full Stack Web App",
     "description": "A platform that connects food donors with charities to reduce food waste. Features include real-time donor listings, charity matching, and impact tracking.",
@@ -11,7 +22,7 @@
     "live": "https://charity-express-d807c.web.app"
   },
   {
-    "id": 2,
+    "id": 3,
     "name": "Foodiez - Knowledge Sharing App",
     "type": "MERN Stack Project",
     "description": "A recipe sharing platform where users can post, discover, and save recipes. Includes user authentication, recipe rating, and personalized feeds.",
@@ -20,16 +31,6 @@
     "client": "https://github.com/Dipok-Kumar-Ray/knowledge-share-client",
     "server": "https://github.com/Dipok-Kumar-Ray/knowledge-share-server",
     "live": " https://eduhive-auth-87275.web.app"
-  },
-  {
-    "id": 3,
-    "name": "Career Code - Career Guide Platform",
-    "type": "React + Node + MongoDB",
-    "description": "A career guidance platform offering resources, job listings, and mentorship connections for aspiring developers. Features include skill assessments and personalized learning paths.",
-    "tech": ["React", "Node.js", "Express", "MongoDB", "Chart.js", "Material UI"],
-    "image": "https://i.ibb.co.com/Kp5SCLfc/image.png",
-    "client": "https://github.com/Dipok-Kumar-Ray/Job-Track-A-9",
-    "server": "https://github.com/Dipok-Kumar-Ray/knowledge-share-server",
-    "live": "https://enchanting-cannoli-23361b.netlify.app"
   }
+
 ]
