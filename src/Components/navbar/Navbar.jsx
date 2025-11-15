@@ -1,6 +1,6 @@
 import { Link, NavLink, useNavigate, useLocation } from "react-router";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import {AnimatePresence } from "framer-motion";
 
 // Function to handle resume download
 // Function to handle resume download

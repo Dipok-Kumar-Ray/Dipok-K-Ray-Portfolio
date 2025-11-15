@@ -4,41 +4,47 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 const ContactInfo = () => {
   useEffect(() => {
-    // Scroll to top when component mounts
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
-  const [successMsg, setSuccessMsg] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
+  const [successMsg, setSuccessMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setSuccessMsg('');
-    setErrorMsg('');
+    setSuccessMsg("");
+    setErrorMsg("");
 
     try {
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/send-email`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(formData),
+        mode: "cors", // ✅ added for explicit CORS handling
       });
 
-      if (!res.ok) throw new Error('Failed to send message');
+      // response text/json নিরাপদে parse করা
+      const data = await res.json().catch(() => ({}));
 
-      const data = await res.json();
-      setSuccessMsg(data.message);
-      setFormData({ name: '', email: '', message: '' });
+      if (!res.ok) {
+        throw new Error(data.error || data.details || "Failed to send message");
+      }
+
+      setSuccessMsg(data.message || "Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" });
     } catch (err) {
-      setErrorMsg('Oops! Something went wrong. Please try again.');
-      console.error(err);
+      console.error("Contact form error:", err);
+      setErrorMsg(err.message || "Oops! Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -47,7 +53,7 @@ const ContactInfo = () => {
   return (
     <section id="contact" className="bg-[#0F172A] text-white py-16 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.h1 
+        <motion.h1
           className="text-center text-3xl font-bold py-5 mb-8 text-green-400"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +62,7 @@ const ContactInfo = () => {
         >
           Contact Me
         </motion.h1>
-        
+
         <div className="grid md:grid-cols-2 gap-12">
           {/* Left Side - Contact Information */}
           <motion.div
@@ -70,13 +76,11 @@ const ContactInfo = () => {
               <span className="text-green-400">next idea</span>
             </h2>
             <p className="text-gray-300 mb-8 leading-relaxed">
-              Whether you have a question, project idea, or want to connect —
-              I'm always open to meaningful conversations.
+              Whether you have a question, project idea, or want to connect — I'm always open to meaningful conversations.
             </p>
 
             <div className="space-y-6">
-              {/* Location */}
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -92,8 +96,7 @@ const ContactInfo = () => {
                 </div>
               </motion.div>
 
-              {/* Phone */}
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -109,8 +112,7 @@ const ContactInfo = () => {
                 </div>
               </motion.div>
 
-              {/* Email */}
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -122,9 +124,7 @@ const ContactInfo = () => {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Email</p>
-                  <p className="font-semibold">
-                    dipok7316@gmail.com
-                  </p>
+                  <p className="font-semibold">dipok7316@gmail.com</p>
                 </div>
               </motion.div>
             </div>
@@ -142,27 +142,28 @@ const ContactInfo = () => {
               Fill out the form and I'll get back to you as soon as possible.
             </h3>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <motion.input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full p-3 rounded-lg bg-[#0F172A] border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-400 transition-all"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  whileFocus={{ scale: 1.02 }}
-                />
-              </div>
+              <motion.input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full p-3 rounded-lg bg-[#0F172A] border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-400 transition-all"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                whileFocus={{ scale: 1.02 }}
+              />
+
               <motion.input
                 type="email"
                 name="email"
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
+                required
                 className="w-full p-3 rounded-lg bg-[#0F172A] border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-400 transition-all"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -170,12 +171,14 @@ const ContactInfo = () => {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 whileFocus={{ scale: 1.02 }}
               />
+
               <motion.textarea
                 placeholder="Message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 rows="5"
+                required
                 className="w-full p-3 rounded-lg bg-[#0F172A] border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-400 transition-all"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -183,11 +186,12 @@ const ContactInfo = () => {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 whileFocus={{ scale: 1.02 }}
               ></motion.textarea>
+
               <motion.button
                 type="submit"
                 disabled={loading}
                 className={`w-full bg-green-600 text-white py-3 rounded hover:bg-green-700 transition ${
-                  loading ? 'opacity-50 cursor-not-allowed' : ''
+                  loading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -196,11 +200,28 @@ const ContactInfo = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                {loading ? 'Sending...' : 'Send Message'}
+                {loading ? "Sending..." : "Send Message"}
               </motion.button>
 
-              {successMsg && <motion.p className="mt-4 text-green-400" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>{successMsg}</motion.p>}
-              {errorMsg && <motion.p className="mt-4 text-red-400" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>{errorMsg}</motion.p>}
+              {successMsg && (
+                <motion.p
+                  className="mt-4 text-green-400"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  {successMsg}
+                </motion.p>
+              )}
+
+              {errorMsg && (
+                <motion.p
+                  className="mt-4 text-red-400"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  {errorMsg}
+                </motion.p>
+              )}
             </form>
           </motion.div>
         </div>
