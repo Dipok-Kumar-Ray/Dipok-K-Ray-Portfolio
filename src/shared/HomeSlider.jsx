@@ -170,5 +170,4 @@ const HomeSlider = () => {
     </section>
   );
 };
-
 export default HomeSlider;
