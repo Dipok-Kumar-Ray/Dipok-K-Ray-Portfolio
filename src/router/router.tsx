@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
       {
         path: "skills",
         element: <Skills />,
-        HydrateFallback: (
+        hydrateFallbackElement: (
           <span className="loading loading-bars loading-xl"></span>
         ),
       },

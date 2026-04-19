@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import ToolsSection from '../home/tools/ToolsSection';
 import ToolsSliderSection from '../home/tools/ToolsSliderSection';
+import SkillAssessment from './SkillAssessment';
 
 const Skills = () => {
     useEffect(() => {
@@ -10,8 +11,9 @@ const Skills = () => {
 
     return (
         <div className='bg-[#0F172A]'>
-            <ToolsSection/>
-            <ToolsSliderSection/>
+            <ToolsSection />
+            <ToolsSliderSection />
+            <SkillAssessment />
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { FaKey } from 'react-icons/fa';
 
 import {
@@ -10,13 +10,32 @@ import {
   SiFigma
 } from "react-icons/si";
 
-// Custom hook for counting animation that runs only once on first intersection
-const useCounterAnimation = (endValue, duration = 2000) => {
+interface ToolType {
+  icon: React.ReactNode;
+  name: string;
+  percentage: number;
+  description: string;
+}
+
+const useCounterAnimation = (endValue: number, duration = 2000) => {
   const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const hasAnimated = useRef(false); // track if animation already ran
+  const ref = useRef<HTMLDivElement | null>(null);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
+    const animate = () => {
+      let start: number | null = null;
+
+      const step = (timestamp: number) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        setCount(Math.floor(progress * endValue));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+
+      requestAnimationFrame(step);
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated.current) {
@@ -24,11 +43,7 @@ const useCounterAnimation = (endValue, duration = 2000) => {
           animate();
         }
       },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5,
-      }
+      { root: null, rootMargin: '0px', threshold: 0.5 }
     );
 
     if (ref.current) {
@@ -40,20 +55,39 @@ const useCounterAnimation = (endValue, duration = 2000) => {
         observer.unobserve(ref.current);
       }
     };
-  }, []);
-
-  const animate = () => {
-    let start = null;
-    const step = (timestamp) => {
-      if (!start) start = timestamp;
-      const progress = Math.min((timestamp - start) / duration, 1);
-      setCount(Math.floor(progress * endValue));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  };
+  }, [duration, endValue]);
 
   return { count, ref };
+};
+
+const ToolCard = ({ tool }: { tool: ToolType }) => {
+  const { count, ref } = useCounterAnimation(tool.percentage);
+
+  return (
+    <div
+      ref={ref}
+      className="bg-[#2c3034] p-6 rounded-lg flex items-center space-x-4
+                 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300 cursor-pointer
+                 before:absolute before:inset-0 before:p-[2px] before:rounded-lg
+                 before:bg-gradient-to-br before:from-green-400 before:to-teal-500 before:opacity-0
+                 hover:before:opacity-100 before:transition-opacity before:duration-300 before:z-0"
+    >
+      <div className="flex-shrink-0 relative z-10 group-hover:text-green-400 transition-colors duration-300">
+        {tool.icon}
+      </div>
+      <div className="flex-grow relative z-10">
+        <h3 className="text-xl font-semibold text-white group-hover:text-green-400 transition-colors duration-300">
+          {tool.name}
+        </h3>
+        <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">
+          {tool.description}
+        </p>
+      </div>
+      <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-teal-500 flex-shrink-0 relative z-10 group-hover:from-green-300 group-hover:to-teal-300 transition-all duration-300">
+        {count}%
+      </div>
+    </div>
+  );
 };
 
 const ToolsSection = () => {
@@ -118,36 +152,9 @@ const ToolsSection = () => {
 
         {/* Tools Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tools.map((tool, index) => {
-            const { count, ref } = useCounterAnimation(tool.percentage);
-            return (
-              <div
-                key={index}
-                ref={ref}
-                className="bg-[#2c3034] p-6 rounded-lg flex items-center space-x-4
-                           relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300 cursor-pointer
-                           before:absolute before:inset-0 before:p-[2px] before:rounded-lg
-                           before:bg-gradient-to-br before:from-green-400 before:to-teal-500 before:opacity-0
-                           hover:before:opacity-100 before:transition-opacity before:duration-300 before:z-0"
-              >
-                {/* Icon */}
-                <div className="flex-shrink-0 relative z-10 group-hover:text-green-400 transition-colors duration-300">
-                  {tool.icon}
-                </div>
-
-                {/* Tool Name and Description */}
-                <div className="flex-grow relative z-10">
-                  <h3 className="text-xl font-semibold text-white group-hover:text-green-400 transition-colors duration-300">{tool.name}</h3>
-                  <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">{tool.description}</p>
-                </div>
-
-                {/* Percentage Counter */}
-                <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-teal-500 flex-shrink-0 relative z-10 group-hover:from-green-300 group-hover:to-teal-300 transition-all duration-300">
-                  {count}%
-                </div>
-              </div>
-            );
-          })}
+          {tools.map((tool) => (
+            <ToolCard key={tool.name} tool={tool} />
+          ))}
         </div>
       </div>
     </section>
