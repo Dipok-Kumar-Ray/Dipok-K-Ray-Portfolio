@@ -1,6 +1,6 @@
 import { Link, NavLink, useNavigate, useLocation } from "react-router";
 import { useState, useEffect } from "react";
-import {AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 // Function to handle resume download
 // Function to handle resume download
@@ -33,7 +33,7 @@ const Navbar = () => {
   const location = useLocation();
 
   // Handle smooth scrolling to sections
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
       // Calculate offset for fixed navbar
@@ -55,7 +55,7 @@ const Navbar = () => {
   };
 
   // Handle navigation to home page sections
-  const handleHomeSectionClick = (e, sectionId) => {
+  const handleHomeSectionClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
     // Close mobile menu
     setIsOpen(false);
