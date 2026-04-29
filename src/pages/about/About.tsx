@@ -5,7 +5,6 @@ const skills = [
   "MERN Stack Development",
   "Competitive Programming",
   "Problem Solving",
-  "Software Engineering",
   "JavaScript, React, Node.js",
   "Database Management (MongoDB)",
   "Version Control (Git/GitHub)",

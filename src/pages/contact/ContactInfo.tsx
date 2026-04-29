@@ -12,12 +12,12 @@ const ContactInfo = () => {
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setSuccessMsg("");
@@ -30,7 +30,7 @@ const ContactInfo = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-        mode: "cors", // ✅ added for explicit CORS handling
+        mode: "cors", //added for explicit CORS handling
       });
 
       // response text/json নিরাপদে parse করা
@@ -44,7 +44,7 @@ const ContactInfo = () => {
       setFormData({ name: "", email: "", message: "" });
     } catch (err) {
       console.error("Contact form error:", err);
-      setErrorMsg(err.message || "Oops! Something went wrong. Please try again.");
+      setErrorMsg(err instanceof Error ? err.message : "Oops! Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -177,7 +177,7 @@ const ContactInfo = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                rows="5"
+                rows={5}
                 required
                 className="w-full p-3 rounded-lg bg-[#0F172A] border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-400 transition-all"
                 initial={{ opacity: 0, y: 20 }}
