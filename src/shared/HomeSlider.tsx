@@ -33,7 +33,7 @@ const HomeSlider = () => {
     <section id="home" className="bg-[#0F172A] text-white min-h-screen flex items-center px-4 sm:px-6 py-10">
       <div className="max-w-6xl w-full flex flex-col-reverse md:flex-row items-center gap-12 mx-auto">
 
-        {/* ================= Left Content ================= */}
+        {/*  Left Content  */}
         <motion.div 
           className="flex-1 text-center md:text-left"
           initial={{ opacity: 0, x: -50 }}
@@ -134,7 +134,7 @@ const HomeSlider = () => {
           </motion.div>
         </motion.div>
 
-        {/* ================= Right Image ================= */}
+        {/*  Right Image  */}
         <motion.div 
           className="flex-1 flex justify-center relative"
           initial={{ opacity: 0, x: 50 }}
