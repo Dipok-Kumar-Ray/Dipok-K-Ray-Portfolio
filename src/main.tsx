@@ -11,7 +11,7 @@ import { router } from "./router/router";
 
 
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     {/* <AuthProvider> */}
       <RouterProvider router={router}></RouterProvider>
