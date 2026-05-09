@@ -11,8 +11,6 @@ const ProjectDetails = () => {
     // Scroll to top when component mounts
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
-
-  // id যদি number হয় তাহলে string এ compare করি
   const project = projectData.find((p) => String(p.id) === String(id));
 
   if (!project) {
